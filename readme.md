@@ -1,0 +1,1 @@
+A Node JS command line interface developed to allow users to play a hangman game.
