@@ -21,7 +21,7 @@ function hangman(){
 
     console.log(randomWord);
     //this cuts the word each session
-         wordSplit = randomWord.slice();
+         wordSplit = randomWord.split("");
     //separate randomWord into individual string values in one array
     console.log(wordSplit);
     //confirm number of positions in new array is equal to letters in randomWord
@@ -67,9 +67,10 @@ function hangman(){
             console.log(theLetter);
             // develop logic for placing correct guesses into array
 
+            //set this to false to it may be toggled in event of a correct guess
         var isLetter = false;
         for (var j = 0; j < wordSplit.length; j++) {
-            if (theLetter === wordSplit.length[j]) {
+            if (theLetter === wordSplit[j]) {
                 isLetter = true;
             }
         }
@@ -86,19 +87,29 @@ function hangman(){
 
         }
                 //outside the for loop, inside first "if"
-            console.log(underScore);
-            }
+        console.log(underScore);
+
+
+    } else {
+        //store the incorrect guess in the wrongGuesses
+        // could also place a conditional to throw out duplicate incorrect guesses (and correct guesses)
+        wrongGuesses.push(theLetter);
+
+        guessesLeft--;
+        console.log("Letter not present in chosen word. You have " + guessesLeft + " guesses left to gkeep trying!");
+        if (guessesLeft = 0) {
+            console.log("Out of guesses, try another round")
+            hangman();
+        }
+    }
             
 
 
             // need to push incorrect guesses into "wrong guesses" and call new game once wrongguesses = wordSplit.length * 2
-            // need to develop logic for restarting game when guessesLeft is = 0
+            // need to develop logic for restarting game when guessesLeft is = 0, decrementing as you go.
 
 
-            if (guessesLeft = 0) {
-                console.log("Out of guesses, try again")
-                hangman();
-            }
+           
 
 
                 
@@ -108,7 +119,6 @@ function hangman(){
     }
 //closing guessingBegin() and calling the game logic
 guessingBegin();
-
 //closing hangman()
 }
 
