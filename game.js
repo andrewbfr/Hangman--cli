@@ -12,7 +12,7 @@ var wordBank = ["circle", "square", "math", "toast", "password", "pen", "pin", "
 var correctLetterDump = [];
 var wrongGuesses = [];
 
-
+//it all comes down to this giant function
 function hangman(){
     //these insure that the blanks are cleared for each session of gameplay and the word is generated anew
     var correctLetterDump = [];
@@ -61,7 +61,7 @@ function hangman(){
                 return false;
             }
             }
-            // that "value" is a bit magical, it must be the absolutevalue of what I'm later calling from the answers object as "theLetter". Interesting that scope prevents "value" from being passed through the inquirer object into the "then()" method
+            // That "value" is a bit magical, it must be the absolutevalue of what I'm later calling from the answers object as "theLetter". Interesting that scope prevents "value" from being passed through the inquirer object into the "then()" method
         ]).then(answers => { 
             var theLetter = answers.userInput;
             console.log(theLetter);
@@ -74,13 +74,13 @@ function hangman(){
                 isLetter = true;
             }
         }
-    // have stored if the presence or absence of userguess in the randomWord as a boolean
-    // need to fill in the blanks with the chosen letters, somehow
+    // Have stored if the presence or absence of userguess in the randomWord as a boolean
+    // Need to fill in the blanks with the chosen letters. Somehow, this happens below.
     if (isLetter) {
         for (var k = 0; k < wordSplit.length; k++) {
             if (randomWord[k] === theLetter){
                 console.log("Correct");
-                //this will show theLetter at the position(s) in the array where it matches
+                //This will show theLetter at the position(s) in the array where it matches
                 underScore[k] = theLetter;    
 
             }
@@ -88,20 +88,28 @@ function hangman(){
         }
                 //outside the for loop, inside first "if"
         console.log(underScore);
+        if (wordSplit === underScore) {
+            console.log("Nice job mate. You've won!");
+            hangman();
+        } else{
+            guessingBegin();
+        }
 
 
     } else {
         //store the incorrect guess in the wrongGuesses
         // could also place a conditional to throw out duplicate incorrect guesses (and correct guesses)
         wrongGuesses.push(theLetter);
-
-        guessesLeft--;
-        console.log("Letter not present in chosen word. You have " + guessesLeft + " guesses left to gkeep trying!");
+        // decrement value of guessesLeft
+        guessesLeft.length--;
+        console.log("Letter not present in chosen word. You have " + guessesLeft + " guesses left to keep trying!");
+        guessingBegin();
         if (guessesLeft = 0) {
             console.log("Out of guesses, try another round")
             hangman();
         }
-    }
+    } 
+
             
 
 
