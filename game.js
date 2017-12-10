@@ -77,26 +77,43 @@ function hangman(){
     // need to fill in the blanks with the chosen letters, somehow
     if (isLetter) {
         for (var k = 0; k < wordSplit.length; k++) {
-            
+            if (randomWord[k] === theLetter){
+                console.log("Correct");
+                //this will show theLetter at the position(s) in the array where it matches
+                underScore[k] = theLetter;    
+
+            }
+
         }
+                //outside the for loop, inside first "if"
+            console.log(underScore);
+            }
+            
 
-    }
+
+            // need to push incorrect guesses into "wrong guesses" and call new game once wrongguesses = wordSplit.length * 2
+            // need to develop logic for restarting game when guessesLeft is = 0
 
 
-    // need to push incorrect guesses into "wrong guesses" and call new game once wrongguesses = wordSplit.length * 2
+            if (guessesLeft = 0) {
+                console.log("Out of guesses, try again")
+                hangman();
+            }
 
 
-        
+                
 
         });
-        //make sure to call hangman() at the end of hangman (or based on some user input) at the end of this function (call hangman inside of hangman)
+     
     }
-//closing hangman() and calling the game logic
+//closing guessingBegin() and calling the game logic
 guessingBegin();
+
+//closing hangman()
 }
 
 
-// this is for the development
+// this is for the development phase
 hangman();
 
 // some inquirer prompt to leave the game, give up when number of guesses is used up or restart (like return to a function that includes the primary random word generation and inquirer guessing).
