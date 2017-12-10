@@ -5,16 +5,17 @@ var letter = require("./letter.js")
 
 
 //word constructor function
-function Word(word) {
+function WordMaker (word) {
     this.word = word
 }
 
 //trying to remotely make the underscore generator as a prototype, export it and require in the game.js
 
-Word.prototoype.underGen = function(){
-    
-}
+WordMaker.prototype.underGen = function(){
+ console.log("underGen method successfully added");
+};
 console.log("word");
 
 
-module.exports = Word;
+module.exports = WordMaker;
+

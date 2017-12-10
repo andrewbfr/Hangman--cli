@@ -44,7 +44,9 @@ function hangman(){
         // }
 
     });
+    //make sure to call hangman() at the end of hangman (or based on some user input) at the end of this function (call hangman inside of hangman)
 }
 
+// this is for the development
 hangman();
 // some inquirer prompt to leave the game, give up when number of guesses is used up or restart (like return to a function that includes the primary random word generation and inquirer guessing).
